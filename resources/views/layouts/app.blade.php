@@ -15,6 +15,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets')}}/imgs/theme/favicon.ico">
 <link rel="stylesheet" href="{{asset('assets')}}/css/main.css">
 <link rel="stylesheet" href="{{asset('assets')}}/css/custom.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 @livewireStyles
 </head>
 
@@ -51,6 +52,7 @@
 <script src="{{asset('assets')}}/js/main.js?v=3.3"></script>
 <script src="{{asset('assets')}}/js/shop.js?v=3.3"></script>
 
+@stack('script')
 @livewireScripts
 </body>
 

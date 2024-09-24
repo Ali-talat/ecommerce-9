@@ -7,7 +7,7 @@ use Livewire\Component;
 class AdminAuth extends Component
 {
     public function register(){
-
+        
     }
     public function registerSave(){
         

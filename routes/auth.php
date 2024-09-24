@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Livewire\AdminAuth;
 use App\Http\Livewire\UserLogin;
 use App\Http\Livewire\UserRegister;
 use Illuminate\Support\Facades\Route;
@@ -18,15 +19,15 @@ Route::middleware('guest')->group(function () {
 
     // routes for admin auth (login ,add ,logout) //
     
-    Route::get('admin_register', UserRegister::class)->name('admin.register');
+    Route::get('admin_register', AdminAuth::class)->name('admin.register');
 
-    Route::post('admin_register', [UserRegister::class, 'store']);
+    Route::post('admin_register', [AdminAuth::class, 'store']);
 
-    Route::get('admin_login', UserLogin::class)->name('login');
+    Route::get('admin_login', AdminAuth::class)->name('login');
 
-    Route::post('admin_login', [UserLogin::class,'store'])->name('admin.login.store');
+    Route::post('admin_login', [AdminAuth::class,'store'])->name('admin.login.store');
 
-    Route::post('admin_logout', [UserLogin::class,'store'])->name('admin.logout');
+    Route::post('admin_logout', [AdminAuth::class,'store'])->name('admin.logout');
 
     // routes for admin auth (login ,add ,logout) //
 
