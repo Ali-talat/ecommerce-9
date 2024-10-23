@@ -19,11 +19,11 @@ class EditCategory extends Component
     {
         $this->category_id = $id;  
         $category = Category::find($id);
-        $this->name = $category->name;
-        // $this->slug = $category->slug;
+        $this->name = $category->name;   #استخدمت هذا السطر لاعرض القيمه في صفحه الاديت بدلا من عرضها في صفحه البلايد#
+        $this->slug = $category->slug;
         
-        // $this->is_active = $category->is_active;
-        // $this->parent_id = $category->parant_id;
+        $this->is_active = $category->is_active;
+        $this->parent_id = $category->parant_id;
 
 
     }

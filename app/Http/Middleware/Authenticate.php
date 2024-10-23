@@ -18,4 +18,9 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
+
+    protected function unauthenticated($request, array $guards)  
+{  
+    return redirect()->route('login'); // Replace 'custom.login' with your desired route  
+} 
 }

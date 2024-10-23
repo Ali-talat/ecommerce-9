@@ -38,7 +38,27 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'product_categories');
+    }  
+
+    public function getManage_stock(){
+        return $this->manage_stock == 1 ? 'اتاحه التتبع' : 'عدم اتاحه التتبع' ;
     }
+
+    public function getIn_stock(){
+        return $this->in_stock == 1 ? ' متاح' : '  غير متاح' ;
+    }
+
+    public function getActive(){
+        return $this-> is_active == 0 ? 'غير مفعل' : 'مفعل';
+    }
+    
+    public function wishlist()
+    {
+        return $this->belongsToMany(User::class, 'wishlists');
+    }
+
+    
+    
 
 }
 

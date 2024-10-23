@@ -28,11 +28,7 @@
                         </div>
                         
                         <div class="card-boody">
-                            @if (session()->has('message'))  
-                                <div class="alert alert-success">  
-                                    {{ session('message') }}  
-                                </div>  
-                            @endif  
+                              
                             <form wire:submit.prevent="addProduct">
                                 <div class="mb-3 mt-3">
                                     <label for="name" class="form-label pl-20">name</label>
@@ -72,7 +68,7 @@
                                     <input type="date" name="special_price_end" class="form-control" wire:model='special_price_end' placeholder="enter product special_price_end">
                                     @error('special_price_end') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
-                                <div class="mb-3 mt-3 qtyDiv hidden">
+                                <div class="mb-3 mt-3 " id="qtyDiv">
                                     <label for="qty" class="form-label pl-20">qty</label>
                                     <input type="text" name="qty" class="form-control" wire:model='qty' placeholder="enter product qty">
                                     @error('qty') <span class="error text-danger">{{ $message }}</span> @enderror
@@ -102,7 +98,7 @@
                                 </div>
                                 <div class="mb-3 mt-3">
                                     <label for="in_stock" class="form-label pl-20">in_stock</label>
-                                    <select name="in_stock"  wire:model='in_stock' class="select2 form-control" id="manageStock">
+                                    <select name="in_stock"  wire:model='in_stock' class="select2 form-control" >
                                         <optgroup label="من فضلك أختر النوع ">
                                             <option
                                                
@@ -145,6 +141,12 @@
                                     </div>
                                 </div>
 
+                                <div class="mb-3 mt-3">
+                                    <label for="images" class="form-label pl-20">images</label>
+                                    <input type="file" name="images" class="form-control" wire:model='images' multiple>
+                                    @error('images.*') <span class="error text-danger">{{ $message }}</span> @enderror
+                                </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group mt-1">
                                         <input type="checkbox" wire:model='active' value="1"
@@ -158,6 +160,11 @@
                                         @error("active")
                                         <span class="text-danger">{{$message }}</span>
                                         @enderror
+                                        @if (session()->has('message'))  
+                                            <div class="alert alert-success">  
+                                                {{ session('message') }}  
+                                            </div>  
+                                        @endif
                                     </div>
                                 </div> 
 
@@ -176,19 +183,22 @@
 </main>
 
 
+{{--     
+@push('script')
     
-
 <script>
     
-    $(document).ready(function(){
-        $("#manageStock").change(function(){
-            if (this.value == '1') {  // 1 if main cat - 2 if sub cat
-                $('.qtyDiv').removeClass('hidden');
-            }else{
-                $('.qtyDiv').addClass('hidden');
-            }
-        });
-    });
+    $(document).ready(function() {  
+    $("#manageStock").change(function() {  
+        console.log("Selected value: " + this.value); // للتحقق من القيمة  
+        if (this.value === '1') {  
+            $('#qtyDiv').removeClass('hidden'); // إظهار العنصر  
+        } else {  
+            $('#qtyDiv').addClass('hidden'); // إخفاء العنصر  
+        }  
+    });  
+});  
 </script>
+@endpush
 
-
+ --}}

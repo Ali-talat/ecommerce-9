@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\Requests\RegisterRequest;
+use App\Models\Admin;
 use App\Models\User;
 use Livewire\Component;
 
@@ -12,7 +13,7 @@ class UserRegister extends Component
     public $email ;
     public $password ;
 
-    public function store(RegisterRequest $registerRequest){
+    public function storeUser(RegisterRequest $registerRequest){
         
         
        $user = User::create([
@@ -24,6 +25,8 @@ class UserRegister extends Component
             return \redirect()->route('login');
         }
     }
+
+    
 
     public function render()
     {

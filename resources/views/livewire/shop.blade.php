@@ -72,7 +72,7 @@
                                     <div class="product-action-1">
                                         <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
                                             <i class="fi-rs-search"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" wire:click.prevent="addToWishlist({{$product->id}})" href="#"><i class="fi-rs-heart"></i></a>
                                         <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                     </div>
                                     <div class="product-badges product-badges-position product-badges-mrg">
@@ -97,12 +97,16 @@
                                         @endif
                                     </div>
                                     <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" wire:click="addtocart({{$product->id}})"><i class="fi-rs-shopping-bag-add"></i></a>
+                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="" wire:click.prevent="addtocart({{$product->id}})"><i class="fi-rs-shopping-bag-add"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                     @endforeach
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">{{ session('message') }}</div>  
+                        @endif
                     </div>
                     <!--pagination-->
                     <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
@@ -112,7 +116,7 @@
                                 <li class="page-item"><a class="page-link" href="#">02</a></li>
                                 <li class="page-item"><a class="page-link" href="#">03</a></li>
                                 <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#">16</a></li>
+                                <li class="page-item"><a class‍="page-link" href="#">16</a></li>
                                 <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li>
                             </ul>
                         </nav>
@@ -233,5 +237,6 @@
                 </div>
             </div>
         </div>
+        
     </section>
 </main>

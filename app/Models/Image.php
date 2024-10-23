@@ -13,4 +13,8 @@ class Image extends Model
         'photo' ,
         'product_id'
     ];
+
+    public function getPhotoAttribute($val){
+        return $val ? \asset('storage/'.$val) : '';
+    }
 }

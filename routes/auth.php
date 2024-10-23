@@ -17,19 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
 
 
-    // routes for admin auth (login ,add ,logout) //
-    
-    Route::get('admin_register', AdminAuth::class)->name('admin.register');
-
-    Route::post('admin_register', [AdminAuth::class, 'store']);
-
-    Route::get('admin_login', AdminAuth::class)->name('login');
-
-    Route::post('admin_login', [AdminAuth::class,'store'])->name('admin.login.store');
-
-    Route::post('admin_logout', [AdminAuth::class,'store'])->name('admin.logout');
-
-    // routes for admin auth (login ,add ,logout) //
+   
 
 
 
